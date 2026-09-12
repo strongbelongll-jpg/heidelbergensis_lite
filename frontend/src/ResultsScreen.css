@@ -1,0 +1,88 @@
+.results {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+}
+
+.results__box {
+  width: 800px;
+  height: 600px;
+  background: url('/o4.jpg') no-repeat center;
+  background-size: contain;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.results__text {
+  width: 70%;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.results__winner {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.results__list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-height: 250px;
+  overflow-y: auto;
+  max-width: 400px;
+}
+
+.results__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.results__name {
+  flex: 0 0 auto;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.results__pop {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.results__item--win {
+  background: rgba(255, 200, 0, 0.4);
+  border: 1px solid gold;
+}
+
+.results__btn {
+  padding: 12px 32px;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.results__btn:hover {
+  background: #b71c1c;
+}

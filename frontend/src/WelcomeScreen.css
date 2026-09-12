@@ -1,0 +1,47 @@
+/* Весь экран — фон */
+.welcome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e; /* запасной цвет, если картинка не загрузится */
+}
+
+/* Окно с картинкой o1.jpg */
+.welcome__box {
+  width: 600px;
+  height: 400px;
+  background: url('/o1.jpg') no-repeat center;
+  background-size: contain;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Кнопка входа — поверх окна */
+.welcome__btn {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background: url('/Inter.png') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.welcome__btn:hover {
+  transform: translateX(-50%) scale(1.05);
+}
+
+.welcome__btn:active {
+  transform: translateX(-50%) scale(0.95);
+}

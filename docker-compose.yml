@@ -1,0 +1,67 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DJANGO_SETTINGS_MODULE=travian_project.settings
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - redis
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    command: npm run dev -- --host 0.0.0.0
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: travian
+      POSTGRES_PASSWORD: travian
+      POSTGRES_DB: travian
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: ./backend
+    command: celery -A travian_project worker -l info
+    volumes:
+      - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=travian_project.settings
+    depends_on:
+      - redis
+      - db
+
+  celery-beat:
+    build: ./backend
+    command: celery -A travian_project beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    volumes:
+      - ./backend:/app
+    environment:
+      - DJANGO_SETTINGS_MODULE=travian_project.settings
+    depends_on:
+      - redis
+      - db
+      - celery
+
+volumes:
+  postgres_data:

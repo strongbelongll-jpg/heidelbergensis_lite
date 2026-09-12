@@ -1,0 +1,89 @@
+/* Экран входа: приглушённая карта на фоне, карточка по центру. */
+.login {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #b8905c;
+}
+
+.login__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) brightness(0.7);
+  user-select: none;
+}
+
+.login__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, calc(100vw - 32px));
+  padding: 28px 28px 24px;
+  border-radius: 16px;
+  background: rgba(255, 245, 220, 0.94);
+  color: #3a250c;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login__title {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.login__text {
+  margin: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.login__btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: #c66a12;
+  color: #fff8ea;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.login__btn:hover { background: #a9560c; }
+
+.login__warn {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #ffe3c2;
+  border: 1px solid #c66a12;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Плашка «кто вошёл» и выход - показываются на карте и в поселении */
+.who {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 3;
+  padding: 6px 8px 6px 14px;
+  border-radius: 12px;
+  background: rgba(40, 24, 8, 0.75);
+  color: #ffe8c2;
+  font: 600 14px/1.2 'Segoe UI', sans-serif;
+}
+.who a {
+  color: #ffd08a;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255, 245, 220, 0.12);
+}
+.who a:hover { background: rgba(255, 245, 220, 0.25); }

@@ -1,0 +1,109 @@
+/* Экран поселения: сцена 16:9 вписана в окно целиком, как и карта,
+   панель племени и кнопка «На карту» - поверх, у краёв окна. */
+.village {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #b8905c;
+}
+
+.village__stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 16 / 9;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+}
+
+.village__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+/* Хижина: ширина в процентах от сцены, центр спрайта по низу - на точке плана. */
+.hut {
+  position: absolute;
+  width: 11%;
+  transform: translate(-50%, -80%);
+  pointer-events: none;
+  filter: drop-shadow(4px 8px 6px rgba(60, 30, 5, 0.45));
+}
+.hut img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.village__top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 2;
+}
+
+.village__back {
+  padding: 10px 16px;
+  border: 2px solid #6b4a1e;
+  border-radius: 12px;
+  background: rgba(255, 245, 220, 0.9);
+  color: #4a2f0e;
+  font: 600 15px/1 'Segoe UI', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.village__back:hover { background: #fff3d6; }
+
+.village__title {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(40, 24, 8, 0.75);
+  color: #ffe8c2;
+  font: 700 18px/1.2 'Segoe UI', sans-serif;
+}
+
+.village__panel {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: min(460px, calc(100vw - 32px));
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(40, 24, 8, 0.55);
+  backdrop-filter: blur(3px);
+  color: #2b1a08;
+  font: 14px/1.3 'Segoe UI', sans-serif;
+  max-height: calc(100vh - 100px);
+  overflow: auto;
+  z-index: 2;
+}
+
+.village__error {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: rgba(40, 24, 8, 0.85);
+  color: #ffe8c2;
+  font: 600 16px/1.3 'Segoe UI', sans-serif;
+  z-index: 2;
+}
+
+.tribe__msg {
+  background: #e8f5e9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #4caf50;
+}

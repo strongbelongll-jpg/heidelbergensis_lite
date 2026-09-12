@@ -1,0 +1,50 @@
+.lobby {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+}
+
+/* Окно в 2 раза больше (было 600x400 → стало 1200x800) */
+.lobby__box {
+  width: 1200px;
+  height: 800px;
+  background: url('/o3.jpg') no-repeat center;
+  background-size: contain;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Кнопка — красная */
+.lobby__btn {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  background: #d32f2f;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.lobby__btn:hover {
+  transform: translateX(-50%) scale(1.05);
+  background: #b71c1c;
+}
+
+.lobby__btn:active {
+  transform: translateX(-50%) scale(0.95);
+}

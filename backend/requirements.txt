@@ -1,0 +1,9 @@
+Django==4.2.30
+djangorestframework
+django-cors-headers
+django-allauth[socialaccount]>=65,<66
+django-celery-beat
+celery
+redis
+psycopg2-binary
+django-redis==5.4.0
