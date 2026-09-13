@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ['travres.ru', 'localhost', '127.0.0.1', '*']
 
 # Адрес фронта (React): сюда возвращаем после входа через Google и отсюда
 # разрешаем запросы с куками. Переопределяется переменной окружения.
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://travres.ru')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost')
 
 # Application definition
 INSTALLED_APPS = [

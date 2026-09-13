@@ -9,7 +9,7 @@ import LobbyScreen from './LobbyScreen'
 import './App.css'
 import ResultsScreen from './ResultsScreen'
 
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+export const API_URL = import.meta.env.VITE_API_URL || ''
 
 axios.defaults.withCredentials = true
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -102,7 +102,6 @@ function App() {
     return axios.get(`${API_URL}/api/tribe/`)
       .then((r) => setTribe(r.data))
       .catch((e) => {
-        // Если сессия завершилась — показываем результаты
         if (e.response?.status === 403 && e.response?.data?.results) {
           setSessionResults(e.response.data.results)
           setSessionWinner(e.response.data.winner)
@@ -151,31 +150,23 @@ function App() {
 
   // 🔑 ИСПРАВЛЕННЫЙ handleLogin с window.location.replace()
   const handleLogin = () => {
-    console.log('🔥 handleLogin вызван!')
-    console.log('me:', me)
-    console.log('me?.login_url:', me?.login_url)
-    
     if (me && me.login_url) {
-      console.log('✅ Перенаправление на:', me.login_url)
       window.location.replace(me.login_url)
       return
     }
     
-    console.log('🔄 me нет или login_url отсутствует, запрашиваем /api/me/')
     axios.get(`${API_URL}/api/me/`)
       .then((response) => {
         const data = response.data
-        console.log('📡 Ответ /api/me/:', data)
         if (data.login_url) {
-          console.log('✅ Перенаправление на:', data.login_url)
           window.location.replace(data.login_url)
         } else {
-          console.error('❌ login_url не найден в ответе:', data)
+          console.error('login_url не найден в ответе:', data)
           alert('Ошибка: login_url не найден. Проверьте настройки Google OAuth.')
         }
       })
       .catch((error) => {
-        console.error('❌ Ошибка загрузки /api/me/:', error)
+        console.error('Ошибка загрузки /api/me/:', error)
         alert('Ошибка подключения к серверу. Проверьте, что бэкенд запущен.')
       })
   }
