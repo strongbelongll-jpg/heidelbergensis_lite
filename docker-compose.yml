@@ -1,6 +1,7 @@
 services:
   backend:
     build: ./backend
+    image: heidelbergensis_lite-backend
     ports:
       - "8000:8000"
     volumes:
@@ -15,6 +16,7 @@ services:
 
   frontend:
     build: ./frontend
+    image: heidelbergensis_lite-frontend
     ports:
       - "5173:5173"
     volumes:
@@ -42,6 +44,7 @@ services:
 
   celery:
     build: ./backend
+    image: heidelbergensis_lite-backend
     command: celery -A travian_project worker -l info
     volumes:
       - ./backend:/app
@@ -53,6 +56,7 @@ services:
 
   celery-beat:
     build: ./backend
+    image: heidelbergensis_lite-backend
     command: celery -A travian_project beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
     volumes:
       - ./backend:/app

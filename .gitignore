@@ -1,8 +1,27 @@
-# Секреты и локальные данные - в репозиторий не попадают
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
 .env
 backend/.env
-backend/db.sqlite3
-backend/.venv/
-backend/**/__pycache__/
+
+# Node
+node_modules/
 frontend/node_modules/
 frontend/dist/
+
+# Docker
+*.log
+
+# PostgreSQL
+pgdata/
+postgres_data/
+
+# Прочее
+.DS_Store
+Thumbs.db
+api_requests.log
+db.sqlite3
