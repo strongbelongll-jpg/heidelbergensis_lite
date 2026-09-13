@@ -15,11 +15,11 @@ SECRET_KEY = 'django-insecure-8v9@!6g8@v0!t#3$^*vq+u7%*+5g7@d8f7d8f7d8f7d8f7d8f7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['travres.ru', 'localhost', '127.0.0.1', '*']
 
 # Адрес фронта (React): сюда возвращаем после входа через Google и отсюда
 # разрешаем запросы с куками. Переопределяется переменной окружения.
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:5173')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://travres.ru')
 
 # Application definition
 INSTALLED_APPS = [
@@ -130,9 +130,17 @@ LOGIN_REDIRECT_URL = FRONTEND_URL
 ACCOUNT_LOGOUT_REDIRECT_URL = FRONTEND_URL
 
 # --- Запросы с фронта с куками сессии ---
-CORS_ALLOWED_ORIGINS = [FRONTEND_URL]
+CORS_ALLOWED_ORIGINS = [
+    'http://travres.ru',
+    'http://localhost:5173',
+    'http://localhost',
+]
 CORS_ALLOW_CREDENTIALS = True
-CSRF_TRUSTED_ORIGINS = [FRONTEND_URL]
+CSRF_TRUSTED_ORIGINS = [
+    'http://travres.ru',
+    'http://localhost:5173',
+    'http://localhost',
+]
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_HTTPONLY = False
@@ -190,6 +198,7 @@ LOGGING = {
         },
     },
 }
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }

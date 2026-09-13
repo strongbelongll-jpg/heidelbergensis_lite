@@ -7,3 +7,5 @@ celery
 redis
 psycopg2-binary
 django-redis==5.4.0
+graphene-django
+drf-spectacular

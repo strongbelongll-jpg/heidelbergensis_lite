@@ -2,8 +2,8 @@ services:
   backend:
     build: ./backend
     image: heidelbergensis_lite-backend
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
       - ./backend:/app
     environment:
@@ -15,16 +15,14 @@ services:
       - db
 
   frontend:
-    build: ./frontend
-    image: heidelbergensis_lite-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    image: heidelbergensis_lite-frontend-prod
     ports:
-      - "5173:5173"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-    environment:
-      - VITE_API_URL=http://localhost:8000
-    command: npm run dev -- --host 0.0.0.0
+      - "80:80"
+    depends_on:
+      - backend
 
   db:
     image: postgres:15
